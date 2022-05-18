@@ -14,15 +14,9 @@ CREATE TABLE IF NOT EXISTS shows (
 
 CREATE TABLE IF NOT EXISTS episodes (
     ep_id SERIAL PRIMARY KEY,
-    ep_season INTEGER,
-    ep_title VARCHAR(50),
-    ep_desc VARCHAR(300)
-
+    ep_season INTEGER NOT NULL,
+    ep_title VARCHAR(255),
+    ep_desc VARCHAR(255) NOT NULL,
+    episodes INTEGER NOT NULL,
+    show_id INT NOT NULL REFERENCES shows (id) ON DELETE CASCADE
 );
-
-
-
-
-
-
-

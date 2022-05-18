@@ -1,15 +1,19 @@
 const res = require('express/lib/response');
 const http = require('http');
 const express = require('express');
+
 const cors = require('cors');
 
 const pgp = require('./server-to-db');
+=======
+
 
 const hostname = `127.0.0.1`;
 const port = 3000;
 
 const app = express();
 const server = http.createServer(app);
+
 
 //middleware
 app.use(cors());
@@ -43,9 +47,24 @@ app.post('/signup', (req, res) => {
 
 
 //user homepage (after successful login)
+=======
+app.get('/', (req, res) => {
+    res.send('Sign-Up Page');
+});
+
+// app.get('/signin', (req, res) => {
+//     res.send('Sign-In Page');
+// });
+
+app.get('/signup', (req, res) => {
+    res.send('Sign-Up Page');
+});
+
+
 app.get('/homepage', (req, res) => {
     res.send('This is the Homepage');
 });
+
 
 //content page (of a given show clicked on by the user)
 app.get('/content', (req, res) => {
@@ -53,6 +72,8 @@ app.get('/content', (req, res) => {
 });
 
 //favorites page (elective, save for after project has been completed)
+=======
+
 
 
 server.listen(port, hostname, () => {

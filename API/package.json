@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db.create": "createdb miniNetflixdb",
     "db.table": "psql -f seed.sql miniNetflixdb",
+    "db.insert": "psql -f insertUsers.sql miniNetflixdb",
     "start": "node ./index.js"
   },
   "keywords": [],
@@ -15,6 +17,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "pg": "^8.7.3"
+    "node-fetch": "^3.2.4",
+    "pg": "^8.7.3",
+    "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }

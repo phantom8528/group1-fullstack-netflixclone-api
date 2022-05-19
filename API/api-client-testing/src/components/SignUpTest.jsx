@@ -8,10 +8,10 @@ class SignUpTest extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            first_name: props.initialText || ` `,
-            last_name: props.initialText || ` `,
-            email: props.initialText || ` `,
-            password: props.initialText || ` `
+            first_name: props.initialText || ``,
+            last_name: props.initialText || ``,
+            email: props.initialText || ``,
+            password: props.initialText || ``
         }
     }
 

@@ -17,6 +17,7 @@ const server = http.createServer(app);
 //middleware
 // app.use(cors());
 // app.use(express.json());
+
 app.use(bodyParser.json());
 app.use(
     bodyParser.urlencoded({
@@ -24,7 +25,7 @@ app.use(
     })
 );
 
-app.use(function(req, res, next) {
+app.use(function(req, res, next) { //<-- This will help with bypassing cors
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -33,11 +34,14 @@ app.use(function(req, res, next) {
 });
 
 
-//homepage route (sign-in page)
-app.get('/', (req, res) => {
-    res.send('Sign-In Page');
-});
+// app.get('/', (req, res) => {
+//     res.send('Sign-In Page');
+// });
 
+
+
+//homepage route (sign-in page)
+app.post('/', client.readUser);
 //sign-up page route
 app.post('/signup', client.createUser);
 
@@ -56,3 +60,6 @@ app.get('/content', (req, res) => {
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 })
+
+
+

@@ -2,64 +2,44 @@ const res = require('express/lib/response');
 const http = require('http');
 const express = require('express');
 
-const cors = require('cors');
+// const cors = require('cors');
+const bodyParser = require('body-parser'); //<-replaced cors
 
-const pgp = require('./server-to-db');
-=======
-
+const client = require('./server-to-db');
+const { response } = require('express');
 
 const hostname = `127.0.0.1`;
-const port = 3000;
+const port = 5000;
 
 const app = express();
 const server = http.createServer(app);
 
-
 //middleware
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+);
+
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 
 //homepage route (sign-in page)
 app.get('/', (req, res) => {
     res.send('Sign-In Page');
-
 });
-
-//wrting new user data into the database
-
-
-//reading new data into the database
 
 //sign-up page route
-app.post('/signup', (req, res) => {
-    // res.send('Sign-Up Page');
-    try{
-        const {first_name, last_name, email, password} = req.body;
-        const newUser = pgp.query(`
-        INSERT INTO users (first_name, last_name, email, password) 
-            VALUES ($1, $2, $3, $4)` [first_name, last_name, email, password]);
-        res.json(newUser);
-    }catch (err){
-        console.log(err.message);
-    }
-});
-
-
-
-//user homepage (after successful login)
-=======
-app.get('/', (req, res) => {
-    res.send('Sign-Up Page');
-});
-
-// app.get('/signin', (req, res) => {
-//     res.send('Sign-In Page');
-// });
-
-app.get('/signup', (req, res) => {
-    res.send('Sign-Up Page');
-});
-
+app.post('/signup', client.createUser);
 
 app.get('/homepage', (req, res) => {
     res.send('This is the Homepage');
@@ -68,13 +48,10 @@ app.get('/homepage', (req, res) => {
 
 //content page (of a given show clicked on by the user)
 app.get('/content', (req, res) => {
-    res.send('This is the Homepage');
+    res.send('This is the Content');
 });
 
 //favorites page (elective, save for after project has been completed)
-=======
-
-
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);

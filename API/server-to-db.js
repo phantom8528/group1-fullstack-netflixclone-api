@@ -52,14 +52,36 @@ const createUser = (req, res) => {
     client.end;
 }
 
-
 //Authenticating a user
 //1. take in the users input
 //2. select from the database
-//3. if what the user entered is there, take them to the homepge 
 //4. if not, send them to the user doesn't exist page
 
+const readUser = (req, res) => {
+    const user = req.body;
+    console.log('USER:', user);
+    let readQuery = `SELECT FROM users WHERE 
+                        (email ilike '${user.email}' AND password ilike '${user.password}')`
+    client.query(readQuery, (err, result) => {
+        if (err) {
+            res.send(`Something is wrong: ${err}`)   
+        }
 
+        if(result.rowCount > 0){
+            console.log('RESULT:', result.rowCount)
+            // res.send(result);
+            res.send(`
+            Login was Sucessful, Result: ${result}
+            `);
+            //this is where the user would get directed to there user page
+        }else{
+            res.send(`Message: Wrong email / password combination`)
+        }
+    })
+}
 
-module.exports = {createUser};
+module.exports = {
+    createUser,
+    readUser
+};
 

@@ -2,8 +2,9 @@ import React from 'react';
 // import SignInTest from './components/SignInTest';
 import SignUpTest from './components/SignUpTest';
 import './App.css';
-// import HomepageTest from './components/HomepageTest';
+import SignInTest from './components/SignInTest';
 
+// import HomepageTest from './components/HomepageTest';
 // import {
 //   BrowserRouter as Router,
 //   Routes,
@@ -19,7 +20,8 @@ class App extends React.Component {
       <div className='App'>
         {/* <h1>This is my App</h1> */}
         
-        <SignUpTest />
+        {/* <SignUpTest /> */}
+        <SignInTest />
 
       </div>
     )

@@ -1,31 +1,22 @@
 import React from 'react';
-// import SignInTest from './components/SignInTest';
-import SignUpTest from './components/SignUpTest';
 import './App.css';
-import SignInTest from './components/SignInTest';
-
 // import HomepageTest from './components/HomepageTest';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
+import SignIn from '/Users/corcoding/Desktop/projects/group1-fullstack-netflixclone-api/API/api-client-testing/src/components/official-ui-components/SignIn.js';
+import SignUp from '/Users/corcoding/Desktop/projects/group1-fullstack-netflixclone-api/API/api-client-testing/src/components/official-ui-components/SignUp.js';
 
-// } from 'react-router-dom';
+
 
 class App extends React.Component {
 
   render(){
     return(
       <div className='App'>
-        {/* <h1>This is my App</h1> */}
-        
-        {/* <SignUpTest /> */}
-        <SignInTest />
-
+        <SignIn />
+        <SignUp />
       </div>
     )
   }
 }
 
 export default App;
+

@@ -1,9 +1,0 @@
-.container {
-    display: flex;
-    width: 400px;
-    flex-direction: column;
-    align-content: space-around;
-    align-items: left;
-    justify-content: center;
-  }
-  

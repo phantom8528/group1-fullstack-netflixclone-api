@@ -9,6 +9,8 @@
     "db.create": "createdb miniNetflixdb",
     "db.table": "psql -f seed.sql miniNetflixdb",
     "db.insert": "psql -f insertUsers.sql miniNetflixdb",
+    "db.shows": "psql -f shows.sql miniNetflixdb",
+    "db.photos": "psql -f photos.sql miniNetflixdb",
     "start": "node ./index.js"
   },
   "keywords": [],
@@ -19,8 +21,7 @@
     "express": "^4.18.1",
     "node-fetch": "^3.2.4",
     "pg": "^8.7.3",
-    "pg-promise": "^10.11.1",
-    "pg": "^8.7.3"
+    "pg-promise": "^10.11.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

@@ -9,8 +9,10 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS shows (
     id SERIAL PRIMARY KEY,
     show_name VARCHAR(255),
-    show_description VARCHAR(255)
+    show_description VARCHAR(255),
 );
+
+ALTER TABLE shows ADD COLUMN genre VARCHAR(255);
 
 CREATE TABLE IF NOT EXISTS episodes (
     ep_id SERIAL PRIMARY KEY,
@@ -18,5 +20,11 @@ CREATE TABLE IF NOT EXISTS episodes (
     ep_title VARCHAR(255),
     ep_desc VARCHAR(255) NOT NULL,
     episodes INTEGER NOT NULL,
+    show_id INT NOT NULL REFERENCES shows (id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS show_photos (
+    photo_id SERIAL PRIMARY KEY,
+    image bytea,
     show_id INT NOT NULL REFERENCES shows (id) ON DELETE CASCADE
 );

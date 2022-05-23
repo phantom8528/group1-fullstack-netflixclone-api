@@ -1,4 +1,3 @@
-//:::::::::::::Connection to the Database::::::::::::::::::
 
 // const pgp = require('pg-promise')();
 
@@ -11,6 +10,9 @@
 
 // const db = pgp(config); //<-- Connects to the database
 
+//:::::::::::::Connection to the Database::::::::::::::::::
+
+
 const {Client} = require('pg');
 const client = new Client({
     host: "localhost",
@@ -20,18 +22,6 @@ const client = new Client({
 });
 
 client.connect();
-
-//SELECTING all the users in the users table
-// client.query('select * from users', (err, res) => {
-//     if (!err) {
-//         console.log(res.rows);
-//     } else {
-//         console.log(err.message);
-//     }
-//     client.end;
-// });
-
-
 
 //:::::::::::::CRUD Operations::::::::::::::::::
 
@@ -84,4 +74,5 @@ module.exports = {
     createUser,
     readUser
 };
+
 

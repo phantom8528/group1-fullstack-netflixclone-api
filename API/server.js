@@ -33,14 +33,7 @@ app.use(function(req, res, next) { //<-- This will help with bypassing cors
     next();
 });
 
-
-// app.get('/', (req, res) => {
-//     res.send('Sign-In Page');
-// });
-
-
-
-//homepage route (sign-in page)
+//route (sign-in page)
 app.post('/', client.readUser);
 //sign-up page route
 app.post('/signup', client.createUser);
@@ -48,7 +41,6 @@ app.post('/signup', client.createUser);
 app.get('/homepage', (req, res) => {
     res.send('This is the Homepage');
 });
-
 
 //content page (of a given show clicked on by the user)
 app.get('/content', (req, res) => {
